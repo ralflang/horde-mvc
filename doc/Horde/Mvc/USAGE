@@ -1,6 +1,7 @@
 To actually define and work with an entity
 
-Overload EntityFactory to define a FieldList and pass it to a new Horde_Mvc_Model_Entity
 Overload RepositoryFactory to load a suitable backend
+Overload Horde_Mvc_Model_EntityFactory to define a FieldList and pass it to a new Horde_Mvc_Model_Entity
+Overload Horde_Mvc_Model_Entity to get an appropriate classname (Suggest the factory classname minus Factory)
 
-Your application logic should wrap any configuration for RepositoryFactory
+TODO: Should we look for a missing entity name and create by default to reduce boilerplates?

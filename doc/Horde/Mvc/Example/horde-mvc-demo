@@ -1,0 +1,57 @@
+#!/usr/bin/php
+<?php
+/**
+ * Mvc Framework Demo script.
+ *
+ * Usage: horde-mvc-demo
+ *
+ * Copyright 2016-2017 Horde LLC (http://www.horde.org/)
+ *
+ * See the enclosed file COPYING for license information (LGPL-2). If you
+ * did not receive this file, see http://www.horde.org/licenses/lgpl.
+ *
+ * @category Horde
+ * @license  http://www.horde.org/licenses/lgpl LGPL-2
+ * @package  Horde_Mvc
+ */
+
+$baseFile = __DIR__ . '/../lib/Application.php';
+if (file_exists($baseFile)) {
+    require_once $baseFile;
+} else {
+    require_once 'PEAR/Config.php';
+    require_once PEAR_Config::singleton()
+        ->get('horde_dir', null, 'pear.horde.org') . '/lib/Application.php';
+}
+Horde_Registry::appInit('horde', array(
+    'authentication' => 'none',
+    'cli' => true
+));
+
+
+class Horde_Customer extends Horde_Mvc_Model_Entity
+{
+
+}
+class Horde_CustomerRepository extends Horde_Mvc_Model_Repository
+{
+
+}
+class Horde_CustomerFactory extends Horde_Mvc_Model_EntityFactory
+{
+    protected function _fieldList()
+    {
+        $list = new Horde_Mvc_Model_FieldList();
+        $list->addField(new Horde_Mvc_Field_Text('customer_id'));
+        $list->addField(new Horde_Mvc_Field_Text('Name'));
+        $list->setKey('customer_id');
+        return $list;
+    }
+}
+
+
+
+
+$injector = $GLOBALS['injector'];
+$injector->bindFactory('Horde_Customer', 'Horde_CustomerFactory', 'create');
+$customer = $injector->createInstance('Horde_Customer');
