@@ -1,0 +1,6 @@
+To actually define and work with an entity
+
+Overload EntityFactory to define a FieldList and pass it to a new Horde_Mvc_Model_Entity
+Overload RepositoryFactory to load a suitable backend
+
+Your application logic should wrap any configuration for RepositoryFactory
