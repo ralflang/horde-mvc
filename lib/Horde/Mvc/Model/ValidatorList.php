@@ -4,5 +4,5 @@
  */
 class Horde_Mvc_Model_ValidatorList extends ArrayObject
 {
-  
+
 }

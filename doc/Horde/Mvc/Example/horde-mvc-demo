@@ -37,21 +37,25 @@ class Horde_CustomerRepository extends Horde_Mvc_Model_Repository
 {
 
 }
+
 class Horde_CustomerFactory extends Horde_Mvc_Model_EntityFactory
 {
     protected function _fieldList()
     {
         $list = new Horde_Mvc_Model_FieldList();
         $list->addField(new Horde_Mvc_Field_Text('customer_id'));
-        $list->addField(new Horde_Mvc_Field_Text('Name'));
+        $list->addField(new Horde_Mvc_Field_Text('name'));
         $list->setKey('customer_id');
         return $list;
     }
 }
 
 
-
-
 $injector = $GLOBALS['injector'];
 $injector->bindFactory('Horde_Customer', 'Horde_CustomerFactory', 'create');
 $customer = $injector->createInstance('Horde_Customer');
+
+$customer->name = "Hans";
+$customer->customer_id = "Wurst";
+
+$view = new Horde_Mvc_View_Entity(array());

@@ -2,9 +2,9 @@
 class Horde_Mvc_Model_Repository
 {
     protected $_factory;
-    
-    
-    
+
+
+
     public function find($filter)
     {
         return $list;
@@ -20,6 +20,7 @@ class Horde_Mvc_Model_Repository
 
     }
 
+    // implicitly create when key is unset or new
     public function update($entity)
     {
 

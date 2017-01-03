@@ -9,7 +9,7 @@ class Horde_Mvc_Field_Base
 
     public function __construct($name, Horde_Mvc_Field_ValidatorList $validators = null, array $options = null)
     {
-        $this->name = $name;
+        $this->_name = $name;
         if (empty($validators)) {
             $validators = new Horde_Mvc_Field_ValidatorList;
         }
